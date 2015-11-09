@@ -168,6 +168,7 @@ public class PictureDownloaderGallery extends ViewGroup {
 
         int rw = MeasureSpec.getSize(widthMeasureSpec);
         int rh = MeasureSpec.getSize(heightMeasureSpec);
+        MeasureSpec.getMode(widthMeasureSpec);
 
 
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -197,27 +198,6 @@ public class PictureDownloaderGallery extends ViewGroup {
         }
 
         setMeasuredDimension(rw, rh);
-    }
-
-    private int measure(int measureSpec, boolean isWidth) {
-        int result;
-        int mode = MeasureSpec.getMode(measureSpec);
-        int size = MeasureSpec.getSize(measureSpec);
-        int padding = isWidth ? getPaddingLeft() + getPaddingRight() : getPaddingTop() + getPaddingBottom();
-        if (mode == MeasureSpec.EXACTLY) {
-            result = size;
-        } else {
-            result = isWidth ? getSuggestedMinimumWidth() : getSuggestedMinimumHeight();
-            result += padding;
-            if (mode == MeasureSpec.AT_MOST) {
-                if (isWidth) {
-                    result = Math.max(result, size);
-                } else {
-                    result = Math.min(result, size);
-                }
-            }
-        }
-        return result;
     }
 
     @Override
